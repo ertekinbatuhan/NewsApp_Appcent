@@ -17,6 +17,7 @@
 		C09661352BEBEC6A000EE41D /* News_AppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09661342BEBEC6A000EE41D /* News_AppUITests.swift */; };
 		C09661372BEBEC6A000EE41D /* News_AppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09661362BEBEC6A000EE41D /* News_AppUITestsLaunchTests.swift */; };
 		C09661442BEBED76000EE41D /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09661432BEBED76000EE41D /* FavoritesViewController.swift */; };
+		C09661492BEBEFE6000EE41D /* APICaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09661482BEBEFE6000EE41D /* APICaller.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		C09661342BEBEC6A000EE41D /* News_AppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News_AppUITests.swift; sourceTree = "<group>"; };
 		C09661362BEBEC6A000EE41D /* News_AppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News_AppUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		C09661432BEBED76000EE41D /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
+		C09661482BEBEFE6000EE41D /* APICaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICaller.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +152,7 @@
 		C09661472BEBEEC4000EE41D /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				C09661482BEBEFE6000EE41D /* APICaller.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -288,6 +291,7 @@
 				C09661182BEBEC68000EE41D /* MainViewController.swift in Sources */,
 				C09661142BEBEC68000EE41D /* AppDelegate.swift in Sources */,
 				C09661442BEBED76000EE41D /* FavoritesViewController.swift in Sources */,
+				C09661492BEBEFE6000EE41D /* APICaller.swift in Sources */,
 				C09661162BEBEC68000EE41D /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
