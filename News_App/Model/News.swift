@@ -1,5 +1,5 @@
 //
-//  APICaller.swift
+//  News.swift
 //  News_App
 //
 //  Created by Batuhan Berk Ertekin on 8.05.2024.
@@ -9,8 +9,7 @@ import Foundation
 import UIKit
 
 
-
-struct APICaller : Codable {
+struct APIResponse : Codable {
     let articles : [News]
     
 }
@@ -23,7 +22,6 @@ struct News : Codable{
     let url : String?
     let urlToImage : String?
     let publishedAt : String
-    
     
 }
 
