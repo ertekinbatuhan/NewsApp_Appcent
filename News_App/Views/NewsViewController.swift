@@ -8,12 +8,7 @@
 import UIKit
 import Kingfisher
 
-
-
-
-class MainViewController: UIViewController {
-    
-
+class NewsViewController: UIViewController {
     
     @IBOutlet weak var newsTableView: UITableView!
     @IBOutlet weak var newsSearchBar: UISearchBar!
@@ -22,17 +17,15 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-
         newsSearchBar.delegate = self 
         newsTableView.delegate = self
         newsTableView.dataSource = self
+        newsSearchBar.placeholder = "Search"
         
         APICaller.shared.getNewsStories{ [weak self]  result in
                     switch result {
                     case .success(let articles):
                         self?.news = articles
-                        
-                        
                         
                         DispatchQueue.main.async {
                             
@@ -45,11 +38,9 @@ class MainViewController: UIViewController {
                 }
             }
         
-        
     }
 
-
-extension MainViewController : UITableViewDelegate, UITableViewDataSource {
+extension NewsViewController : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         return news.count
@@ -95,8 +86,6 @@ extension MainViewController : UITableViewDelegate, UITableViewDataSource {
             case .success(let articles):
                 self?.news = articles
                 
-                
-                
                 DispatchQueue.main.async {
                     
                     self?.newsTableView.reloadData()
@@ -116,7 +105,7 @@ extension MainViewController : UITableViewDelegate, UITableViewDataSource {
     
 }
     
-extension MainViewController : UISearchBarDelegate {
+extension NewsViewController : UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText.isEmpty {
