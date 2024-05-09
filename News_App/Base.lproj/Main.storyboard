@@ -54,9 +54,9 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="987-9p-0me">
-                                                    <rect key="frame" x="243" y="16" width="150" height="132"/>
+                                                    <rect key="frame" x="243" y="16" width="145" height="132"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="150" id="VAF-mf-0kK"/>
+                                                        <constraint firstAttribute="width" constant="145" id="VAF-mf-0kK"/>
                                                     </constraints>
                                                 </imageView>
                                             </subviews>
@@ -66,8 +66,9 @@
                                                 <constraint firstItem="HRa-MA-8VN" firstAttribute="leading" secondItem="cIA-L4-F6F" secondAttribute="leading" id="7Ju-Az-9eR"/>
                                                 <constraint firstItem="cIA-L4-F6F" firstAttribute="top" secondItem="HRa-MA-8VN" secondAttribute="bottom" constant="8" id="8CV-AI-Ykd"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="cIA-L4-F6F" secondAttribute="bottom" constant="-11" id="UV7-UK-IOp"/>
+                                                <constraint firstAttribute="trailing" secondItem="987-9p-0me" secondAttribute="trailing" constant="5" id="fph-qQ-LUr"/>
                                                 <constraint firstItem="987-9p-0me" firstAttribute="top" secondItem="hTK-9Q-Nsi" secondAttribute="topMargin" constant="5" id="jEK-Wf-z8C"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="987-9p-0me" secondAttribute="trailing" constant="-20" id="qIa-VX-ipj"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="987-9p-0me" secondAttribute="trailing" constant="-15" id="qIa-VX-ipj"/>
                                                 <constraint firstItem="987-9p-0me" firstAttribute="centerY" secondItem="hTK-9Q-Nsi" secondAttribute="centerY" constant="-2.5" id="qRa-dv-83R"/>
                                                 <constraint firstItem="HRa-MA-8VN" firstAttribute="top" secondItem="hTK-9Q-Nsi" secondAttribute="topMargin" id="xTB-hT-qVC"/>
                                             </constraints>

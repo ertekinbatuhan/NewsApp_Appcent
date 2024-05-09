@@ -25,7 +25,7 @@ class MainViewController: UIViewController {
 
         newsSearchBar.delegate = self 
         newsTableView.delegate = self
-        newsTableView.dataSource = self 
+        newsTableView.dataSource = self
         
         APICaller.shared.getNewsStories{ [weak self]  result in
                     switch result {
@@ -111,7 +111,7 @@ extension MainViewController : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-        return 200
+        return 180
     }
     
 }
@@ -120,7 +120,7 @@ extension MainViewController : UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText.isEmpty {
-            // Arama çubuğu boşsa, tüm haberleri yükle
+            
             loadNewsStories()
         } else {
             APICaller.shared.search(with: searchText) { [weak self] result in
