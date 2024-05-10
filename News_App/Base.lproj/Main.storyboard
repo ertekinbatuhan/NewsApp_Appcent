@@ -275,7 +275,7 @@
                         <outlet property="descriptionLabel" destination="YeI-2j-Ej2" id="DEm-Th-g1O"/>
                         <outlet property="newsImageView" destination="vEP-CM-l7a" id="j1U-MJ-4zd"/>
                         <outlet property="titleLabel" destination="vnG-JS-emd" id="98M-tX-tya"/>
-                        <segue destination="EHq-F8-OVD" kind="show" identifier="test" id="XTt-tt-jf3"/>
+                        <segue destination="EHq-F8-OVD" kind="show" identifier="newsSourceViewController" id="XTt-tt-jf3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Uqe-WY-hD1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

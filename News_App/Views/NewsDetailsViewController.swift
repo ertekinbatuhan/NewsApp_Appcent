@@ -84,14 +84,14 @@ class NewsDetailsViewController: UIViewController {
     }
     
     @IBAction func newsSourceButton(_ sender: Any) {
-        performSegue(withIdentifier: "test", sender: self)
+        performSegue(withIdentifier: "newsSourceViewController", sender: self)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Segue, NewsSourceViewController'a gidiyorsa ve NewsSourceViewController'ın örneği varsa
-        if segue.identifier == "test",
+       
+        if segue.identifier == "newsSourceViewController",
            let newsSourceViewController = segue.destination as? NewsSourceViewController {
-            // NewsSourceViewController'da kullanılacak veriyi aktar
+            
             newsSourceViewController.newsUrl = URL(string: selectedNews?.url ?? "")
         }
     }
