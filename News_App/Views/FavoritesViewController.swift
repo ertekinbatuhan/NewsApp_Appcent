@@ -56,7 +56,6 @@ extension FavoritesViewController : UITableViewDelegate , UITableViewDataSource 
         
     }
     
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = favoritesTableView.dequeueReusableCell(withIdentifier: "favoritesTableViewCell", for: indexPath) as! FavoritesTableViewCell

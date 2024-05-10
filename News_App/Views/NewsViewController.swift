@@ -7,12 +7,17 @@
 
 import UIKit
 import Kingfisher
+import RxSwift
+import RxCocoa
+
 
 class NewsViewController: UIViewController {
     
     @IBOutlet weak var newsTableView: UITableView!
     @IBOutlet weak var newsSearchBar: UISearchBar!
     private var news = [News]()
+    let disposeBag = DisposeBag()
+    let newsViewModel = NewsViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,22 +31,24 @@ class NewsViewController: UIViewController {
         newsTableView.dataSource = self
         newsSearchBar.placeholder = "Search"
         newsSearchBar.backgroundImage = UIImage()
+        setupBindings()
+        newsViewModel.requestData()
         
-        APICaller.shared.getNewsStories{ [weak self]  result in
-                    switch result {
-                    case .success(let articles):
-                        self?.news = articles
-                        
-                        DispatchQueue.main.async {
-                            
-                            self?.newsTableView.reloadData()
-                        }
-                        
-                    case .failure(let error):
-                        print(error)
-                    }
-                }
             }
+    
+    
+    private func setupBindings(){
+        
+        newsViewModel.error.observe(on: MainScheduler.asyncInstance).subscribe { error in
+            print(error)
+        }.disposed(by: disposeBag)
+        
+        newsViewModel.news.observe(on: MainScheduler.asyncInstance).subscribe{news in
+            
+            self.news = news
+            self.newsTableView.reloadData()
+        }.disposed(by: disposeBag)
+    }
         
     }
 
@@ -85,24 +92,6 @@ extension NewsViewController : UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
-    func loadNewsStories() {
-        
-        APICaller.shared.getNewsStories{ [weak self]  result in
-            switch result {
-            case .success(let articles):
-                self?.news = articles
-                
-                DispatchQueue.main.async {
-                    
-                    self?.newsTableView.reloadData()
-                }
-                
-            case .failure(let error):
-                print(error)
-            }
-        }
-        
-    }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
@@ -122,28 +111,20 @@ extension NewsViewController : UITableViewDelegate, UITableViewDataSource {
         }
     }
     
-    
 }
 
-    
 extension NewsViewController : UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText.isEmpty {
             
-            loadNewsStories()
+            newsViewModel.requestData()
+            newsTableView.reloadData()
+            
         } else {
-            APICaller.shared.search(with: searchText) { [weak self] result in
-                switch result {
-                case .success(let articles):
-                    self?.news = articles
-                    DispatchQueue.main.async {
-                        self?.newsTableView.reloadData()
-                    }
-                case .failure(let error):
-                    print("Search error: \(error)")
-                }
-            }
+            
+            newsViewModel.searchNews(searchText: searchText)
+            newsTableView.reloadData()
         }
     }
 }

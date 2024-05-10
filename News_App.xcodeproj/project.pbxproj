@@ -17,6 +17,7 @@
 		C07AB0092BEE3BAE002BA1BB /* FavoritesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07AB0082BEE3BAE002BA1BB /* FavoritesViewModel.swift */; };
 		C07AB00B2BEE4527002BA1BB /* NewsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07AB00A2BEE4527002BA1BB /* NewsViewModel.swift */; };
 		C07AB00D2BEE5372002BA1BB /* NewsDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07AB00C2BEE5372002BA1BB /* NewsDetailsViewModel.swift */; };
+		C07AB00F2BEE6E29002BA1BB /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = C07AB00E2BEE6E29002BA1BB /* RxCocoa */; };
 		C09661142BEBEC68000EE41D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09661132BEBEC68000EE41D /* AppDelegate.swift */; };
 		C09661162BEBEC68000EE41D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09661152BEBEC68000EE41D /* SceneDelegate.swift */; };
 		C09661182BEBEC68000EE41D /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09661172BEBEC68000EE41D /* NewsViewController.swift */; };
@@ -83,6 +84,7 @@
 			files = (
 				C07AB0072BEE3AED002BA1BB /* RxSwift in Frameworks */,
 				C051459D2BED5CA900461264 /* Kingfisher in Frameworks */,
+				C07AB00F2BEE6E29002BA1BB /* RxCocoa in Frameworks */,
 				C05145AA2BEE1CAD00461264 /* FirebaseFirestore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -234,6 +236,7 @@
 				C051459C2BED5CA900461264 /* Kingfisher */,
 				C05145A92BEE1CAD00461264 /* FirebaseFirestore */,
 				C07AB0062BEE3AED002BA1BB /* RxSwift */,
+				C07AB00E2BEE6E29002BA1BB /* RxCocoa */,
 			);
 			productName = News_App;
 			productReference = C09661102BEBEC68000EE41D /* News_App.app */;
@@ -758,6 +761,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = C07AB0052BEE3ADF002BA1BB /* XCRemoteSwiftPackageReference "RxSwift" */;
 			productName = RxSwift;
+		};
+		C07AB00E2BEE6E29002BA1BB /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C07AB0052BEE3ADF002BA1BB /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
