@@ -56,7 +56,7 @@ class NewsDetailsViewController: UIViewController {
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
         
         if let date = dateFormatter.date(from: dateString!) {
-            dateFormatter.dateFormat = "dd MMMM yyyy, HH:mm"
+            dateFormatter.dateFormat = "dd MMMM yyyy"
             let formattedDate = dateFormatter.string(from: date)
             dateLabel.text = formattedDate
         } else {
@@ -99,7 +99,6 @@ class NewsDetailsViewController: UIViewController {
     
     @objc func favoriItemTapped() {
         
-        
         addNewsToFirebase(newsIndex: selectedNews!)
     }
     
@@ -107,7 +106,7 @@ class NewsDetailsViewController: UIViewController {
            
            let db = Firestore.firestore()
            
-        let fireStoreNewsData  = ["source" : newsIndex.source.name,"title": newsIndex.title, "description": newsIndex.description!, "url": newsIndex.url!, "urlToImage": newsIndex.urlToImage ?? "", "Date" : newsIndex.publishedAt , "author" : newsIndex.author ?? ""] as [String : Any]
+        let fireStoreNewsData  = ["source" : newsIndex.source.name ,"title": newsIndex.title, "description": newsIndex.description!, "url": newsIndex.url!, "urlToImage": newsIndex.urlToImage ?? "", "Date" : newsIndex.publishedAt , "author" : newsIndex.author ?? ""] as [String : Any]
            
            db.collection("News").addDocument(data: fireStoreNewsData , completion: { error in
                
@@ -117,10 +116,8 @@ class NewsDetailsViewController: UIViewController {
                } else {
                    
                }
-               
            })
        }
-    
 }
 
 
