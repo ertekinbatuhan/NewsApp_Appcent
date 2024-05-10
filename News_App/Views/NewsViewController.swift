@@ -25,6 +25,7 @@ class NewsViewController: UIViewController {
         newsTableView.delegate = self
         newsTableView.dataSource = self
         newsSearchBar.placeholder = "Search"
+        newsSearchBar.backgroundImage = UIImage()
         
         APICaller.shared.getNewsStories{ [weak self]  result in
                     switch result {

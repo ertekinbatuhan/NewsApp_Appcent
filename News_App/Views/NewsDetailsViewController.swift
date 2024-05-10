@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 class NewsDetailsViewController: UIViewController {
     
@@ -98,8 +99,27 @@ class NewsDetailsViewController: UIViewController {
     
     @objc func favoriItemTapped() {
         
+        
+        addNewsToFirebase(newsIndex: selectedNews!)
     }
     
+    func addNewsToFirebase(newsIndex : News) {
+           
+           let db = Firestore.firestore()
+           
+        let fireStoreNewsData  = ["source" : newsIndex.source.name,"title": newsIndex.title, "description": newsIndex.description!, "url": newsIndex.url!, "urlToImage": newsIndex.urlToImage ?? "", "Date" : newsIndex.publishedAt , "author" : newsIndex.author ?? ""] as [String : Any]
+           
+           db.collection("News").addDocument(data: fireStoreNewsData , completion: { error in
+               
+               if error != nil {
+                   
+                   print(error!.localizedDescription)
+               } else {
+                   
+               }
+               
+           })
+       }
     
 }
 
