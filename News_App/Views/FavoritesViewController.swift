@@ -7,6 +7,7 @@
 
 import UIKit
 import Firebase
+import Kingfisher
 
 class FavoritesViewController: UIViewController {
 
@@ -16,10 +17,12 @@ class FavoritesViewController: UIViewController {
         var isSearching = false
         var searchArray = [FavoriteNews]()
         var favoriteNews =  [FavoriteNews]()
+        var favoritesViewModel = FavoritesViewModel()
+      
+    @IBOutlet weak var favoriteSearchBar: UISearchBar!
     
     @IBOutlet weak var newsSearchBar: UISearchBar!
-    
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -27,15 +30,30 @@ class FavoritesViewController: UIViewController {
         favoritesTableView.delegate = self
         newsSearchBar.delegate = self
         newsSearchBar.backgroundImage = UIImage()
-
+        
+        favoriteSearchBar.placeholder = "Search"
+        
+        _ = favoritesViewModel.newsItemsArray.subscribe(onNext: { data in
+            
+            self.favoriteNews = data
+            DispatchQueue.main.async {
+                
+                self.favoritesTableView.reloadData()
+            }
+        })
     }
-    
 }
 
 extension FavoritesViewController : UITableViewDelegate , UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return favoriteNews.count
+        if isSearching {
+            
+            return  searchArray.count
+        } else {
+            return favoriteNews.count
+        }
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -46,7 +64,40 @@ extension FavoritesViewController : UITableViewDelegate , UITableViewDataSource 
         
         cell.titleLabel.text = favoriteNewsItem.title
         cell.descriptionLabel.text = favoriteNewsItem.description
+        cell.titleLabel.numberOfLines = 0
+        cell.descriptionLabel.numberOfLines = 0
         
+        cell.titleLabel.font  = .systemFont(ofSize: 25,weight: .semibold)
+        cell.descriptionLabel.font = .systemFont(ofSize: 17, weight: .regular)
+        
+        cell.newsImageView.layer.cornerRadius = 6
+        cell.newsImageView.layer.masksToBounds = true
+        cell.newsImageView.contentMode = .scaleAspectFill
+        cell.newsImageView.backgroundColor = .secondarySystemBackground
+        cell.newsImageView.clipsToBounds = true
+        
+        if let imageUrl = URL(string: favoriteNewsItem.urlToImage) {
+            
+            cell.newsImageView.kf.setImage(with: imageUrl)
+        }
+        
+        if isSearching {
+            let newsItem = searchArray[indexPath.row]
+            cell.titleLabel.text = newsItem.title
+            cell.descriptionLabel.text = newsItem.description
+            if let imageUrl = URL(string: newsItem.urlToImage) {
+                cell.newsImageView.kf.setImage(with: imageUrl)
+            }
+            
+        } else {
+            
+            let newsItem = favoriteNews[indexPath.row]
+            cell.titleLabel.text = newsItem.title
+            cell.descriptionLabel.text = newsItem.description
+            if let imageUrl = URL(string: newsItem.urlToImage) {
+                cell.newsImageView.kf.setImage(with: imageUrl)
+            }
+        }
         
         return cell
     }
@@ -54,14 +105,19 @@ extension FavoritesViewController : UITableViewDelegate , UITableViewDataSource 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 180
     }
-    
-    
-    
 }
-
- 
 
 extension FavoritesViewController : UISearchBarDelegate {
     
-    
-}
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText == "" {
+                  isSearching = false
+                  
+              } else {
+                  isSearching = true
+                  searchArray = favoriteNews.filter({$0.title.lowercased().contains(searchText.lowercased())})
+              }
+              self.favoritesTableView.reloadData()
+          }
+    }
+

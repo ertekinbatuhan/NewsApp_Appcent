@@ -14,6 +14,8 @@
 		C05145A72BEE1BB300461264 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C05145A62BEE1BB300461264 /* GoogleService-Info.plist */; };
 		C05145AA2BEE1CAD00461264 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = C05145A92BEE1CAD00461264 /* FirebaseFirestore */; };
 		C05145AC2BEE2AD000461264 /* FavoriteNews.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05145AB2BEE2AD000461264 /* FavoriteNews.swift */; };
+		C07AB0072BEE3AED002BA1BB /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = C07AB0062BEE3AED002BA1BB /* RxSwift */; };
+		C07AB0092BEE3BAE002BA1BB /* FavoritesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07AB0082BEE3BAE002BA1BB /* FavoritesViewModel.swift */; };
 		C09661142BEBEC68000EE41D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09661132BEBEC68000EE41D /* AppDelegate.swift */; };
 		C09661162BEBEC68000EE41D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09661152BEBEC68000EE41D /* SceneDelegate.swift */; };
 		C09661182BEBEC68000EE41D /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09661172BEBEC68000EE41D /* NewsViewController.swift */; };
@@ -52,6 +54,7 @@
 		C05145A42BEE0E5B00461264 /* NewsSourceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsSourceViewController.swift; sourceTree = "<group>"; };
 		C05145A62BEE1BB300461264 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C05145AB2BEE2AD000461264 /* FavoriteNews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteNews.swift; sourceTree = "<group>"; };
+		C07AB0082BEE3BAE002BA1BB /* FavoritesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewModel.swift; sourceTree = "<group>"; };
 		C09661102BEBEC68000EE41D /* News_App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = News_App.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C09661132BEBEC68000EE41D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C09661152BEBEC68000EE41D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -76,6 +79,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C07AB0072BEE3AED002BA1BB /* RxSwift in Frameworks */,
 				C051459D2BED5CA900461264 /* Kingfisher in Frameworks */,
 				C05145AA2BEE1CAD00461264 /* FirebaseFirestore in Frameworks */,
 			);
@@ -202,6 +206,7 @@
 		C096614E2BEBF298000EE41D /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				C07AB0082BEE3BAE002BA1BB /* FavoritesViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -225,6 +230,7 @@
 			packageProductDependencies = (
 				C051459C2BED5CA900461264 /* Kingfisher */,
 				C05145A92BEE1CAD00461264 /* FirebaseFirestore */,
+				C07AB0062BEE3AED002BA1BB /* RxSwift */,
 			);
 			productName = News_App;
 			productReference = C09661102BEBEC68000EE41D /* News_App.app */;
@@ -301,6 +307,7 @@
 			packageReferences = (
 				C051459A2BED5BDE00461264 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				C05145A82BEE1C9D00461264 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				C07AB0052BEE3ADF002BA1BB /* XCRemoteSwiftPackageReference "RxSwift" */,
 			);
 			productRefGroup = C09661112BEBEC68000EE41D /* Products */;
 			projectDirPath = "";
@@ -352,6 +359,7 @@
 				C09661182BEBEC68000EE41D /* NewsViewController.swift in Sources */,
 				C09661142BEBEC68000EE41D /* AppDelegate.swift in Sources */,
 				C051459F2BED803F00461264 /* NewsDetailsViewController.swift in Sources */,
+				C07AB0092BEE3BAE002BA1BB /* FavoritesViewModel.swift in Sources */,
 				C05145A52BEE0E5B00461264 /* NewsSourceViewController.swift in Sources */,
 				C09661442BEBED76000EE41D /* FavoritesViewController.swift in Sources */,
 				C09661492BEBEFE6000EE41D /* APICaller.swift in Sources */,
@@ -721,6 +729,14 @@
 				minimumVersion = 10.25.0;
 			};
 		};
+		C07AB0052BEE3ADF002BA1BB /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.7.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -733,6 +749,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = C05145A82BEE1C9D00461264 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseFirestore;
+		};
+		C07AB0062BEE3AED002BA1BB /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C07AB0052BEE3ADF002BA1BB /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
