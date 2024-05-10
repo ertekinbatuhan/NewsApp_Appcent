@@ -49,4 +49,33 @@ class FavoritesViewModel {
                 }
             }
       }
+    
+    func removeNewsFromFavorites(_ newsIndex: News) {
+        let db = Firestore.firestore()
+        let newsCollection = db.collection("News")
+        let newsTitle = newsIndex.title
+        
+ 
+        newsCollection.whereField("title", isEqualTo: newsTitle).getDocuments { (querySnapshot, error) in
+            if let error = error {
+                print(error.localizedDescription)
+                return
+            }
+            
+            guard let documents = querySnapshot?.documents else {
+                print("title not found")
+                return
+            }
+            
+            for document in documents {
+                newsCollection.document(document.documentID).delete { error in
+                    if let error = error {
+                        print(error.localizedDescription)
+                    } else {
+                        print("delete is succesfull")
+                    }
+                }
+            }
+        }
+    }
 }

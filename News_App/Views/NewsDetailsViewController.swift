@@ -10,20 +10,17 @@ import Firebase
 
 class NewsDetailsViewController: UIViewController {
     
-    
     var selectedNews  : News?
     
     @IBOutlet weak var newsImageView: UIImageView!
-    
-    
     @IBOutlet weak var authorImage: UIImageView!
-    
     @IBOutlet weak var authorLabel: UILabel!
-    
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var dateView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
+    
+    var newsDetailsViewModel = NewsDetailsViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,9 +64,23 @@ class NewsDetailsViewController: UIViewController {
             newsImageView.kf.setImage(with: imageUrl)
         } else {
             
-            newsImageView.image = UIImage(named: "defaultImage")
+            newsImageView.image = UIImage(named: "kingfisher")
         }
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        if let newsIndex = selectedNews {
+                newsDetailsViewModel.checkIfNewsIsFavorite(newsIndex) { isFavorite in
+                    
+                    if isFavorite {
+                        self.navigationItem.rightBarButtonItem?.image = UIImage(systemName: "heart.fill")
+                    } else {
+                        self.navigationItem.rightBarButtonItem?.image = UIImage(systemName: "heart")
+                    }
+                }
+            }
     }
     
     @objc func copyUrlItemTapped() {
@@ -98,26 +109,20 @@ class NewsDetailsViewController: UIViewController {
     }
     
     @objc func favoriItemTapped() {
-        
-        addNewsToFirebase(newsIndex: selectedNews!)
+        if let newsIndex = selectedNews {
+            newsDetailsViewModel.checkIfNewsIsFavorite(newsIndex) { isFavorite in
+                if isFavorite {
+                    
+                    self.newsDetailsViewModel.removeNewsFromFavorites(newsIndex)
+                    self.navigationItem.rightBarButtonItem?.image = UIImage(systemName: "heart")
+                } else {
+                    
+                    self.newsDetailsViewModel.addNewsToFavorites(newsIndex)
+                    self.navigationItem.rightBarButtonItem?.image = UIImage(systemName: "heart.fill")
+                }
+            }
+        }
     }
-    
-    func addNewsToFirebase(newsIndex : News) {
-           
-           let db = Firestore.firestore()
-           
-        let fireStoreNewsData  = ["source" : newsIndex.source.name ,"title": newsIndex.title, "description": newsIndex.description!, "url": newsIndex.url!, "urlToImage": newsIndex.urlToImage ?? "", "Date" : newsIndex.publishedAt , "author" : newsIndex.author ?? ""] as [String : Any]
-           
-           db.collection("News").addDocument(data: fireStoreNewsData , completion: { error in
-               
-               if error != nil {
-                   
-                   print(error!.localizedDescription)
-               } else {
-                   
-               }
-           })
-       }
 }
 
 

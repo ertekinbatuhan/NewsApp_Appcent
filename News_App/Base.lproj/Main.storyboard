@@ -227,7 +227,7 @@
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="kingfisher-1.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="vEP-CM-l7a">
                                                 <rect key="frame" x="8" y="0.0" width="377" height="251"/>
                                             </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YeI-2j-Ej2">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YeI-2j-Ej2">
                                                 <rect key="frame" x="8" y="428" width="377" height="142"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="142" id="JWM-QF-jpg"/>
