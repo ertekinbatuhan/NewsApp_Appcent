@@ -111,14 +111,47 @@
                     <view key="view" contentMode="scaleToFill" id="BAJ-97-C63">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="yRT-5s-fRj">
+                                <rect key="frame" x="0.0" y="103" width="393" height="44"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="Ot8-WD-TE0" id="Gwo-GT-pFe"/>
+                                </connections>
+                            </searchBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Xl1-SC-8aJ">
+                                <rect key="frame" x="0.0" y="147" width="393" height="622"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="favoritesTableViewCell" rowHeight="182" id="KDA-J8-YNA" customClass="FavoritesTableViewCell" customModule="News_App" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="50" width="393" height="182"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="KDA-J8-YNA" id="6XI-kk-ido">
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="182"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="NU6-1V-yfX"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="NU6-1V-yfX" firstAttribute="bottom" secondItem="yRT-5s-fRj" secondAttribute="bottom" constant="622" id="5sA-0M-DKO"/>
+                            <constraint firstItem="NU6-1V-yfX" firstAttribute="bottom" secondItem="Xl1-SC-8aJ" secondAttribute="bottom" id="Fod-6D-fwS"/>
+                            <constraint firstItem="Xl1-SC-8aJ" firstAttribute="leading" secondItem="NU6-1V-yfX" secondAttribute="leading" id="LVO-38-YDP"/>
+                            <constraint firstItem="yRT-5s-fRj" firstAttribute="leading" secondItem="NU6-1V-yfX" secondAttribute="leading" id="Lmy-FX-k5S"/>
+                            <constraint firstItem="Xl1-SC-8aJ" firstAttribute="top" secondItem="yRT-5s-fRj" secondAttribute="bottom" id="NOX-fO-TPE"/>
+                            <constraint firstItem="yRT-5s-fRj" firstAttribute="trailing" secondItem="NU6-1V-yfX" secondAttribute="trailing" id="fYf-0H-Pi2"/>
+                            <constraint firstItem="NU6-1V-yfX" firstAttribute="trailing" secondItem="Xl1-SC-8aJ" secondAttribute="trailing" id="l5R-PL-6kO"/>
+                            <constraint firstItem="yRT-5s-fRj" firstAttribute="top" secondItem="NU6-1V-yfX" secondAttribute="top" id="qkv-jX-dMf"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Favorites" id="fPq-PP-rOd"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gRu-1v-vFd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6868" y="-8"/>
+            <point key="canvasLocation" x="6867.93893129771" y="-8.4507042253521139"/>
         </scene>
         <!--News Details View Controller-->
         <scene sceneID="urP-47-kpZ">
@@ -216,6 +249,9 @@
                                 </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="tinted" title="News Source"/>
+                                <connections>
+                                    <action selector="newsSourceButton:" destination="Ei7-CT-w30" eventType="touchUpInside" id="btW-Op-lOr"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="f8W-gK-2Mz"/>
@@ -239,11 +275,28 @@
                         <outlet property="descriptionLabel" destination="YeI-2j-Ej2" id="DEm-Th-g1O"/>
                         <outlet property="newsImageView" destination="vEP-CM-l7a" id="j1U-MJ-4zd"/>
                         <outlet property="titleLabel" destination="vnG-JS-emd" id="98M-tX-tya"/>
+                        <segue destination="EHq-F8-OVD" kind="show" identifier="test" id="XTt-tt-jf3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Uqe-WY-hD1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="9011.4503816793895" y="-8.4507042253521139"/>
+        </scene>
+        <!--News Source-->
+        <scene sceneID="2Ua-U9-kz0">
+            <objects>
+                <viewController id="EHq-F8-OVD" customClass="NewsSourceViewController" customModule="News_App" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="B1R-gh-iji">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="fRu-uv-mOS"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="News Source" id="Yjc-NI-pN9"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9UV-WM-VvE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="10762.595419847328" y="-25.35211267605634"/>
         </scene>
         <!--News-->
         <scene sceneID="2Uz-NG-TnZ">
