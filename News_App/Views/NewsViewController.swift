@@ -17,6 +17,10 @@ class NewsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let backButton = UIBarButtonItem()
+           backButton.title = "Back"
+           navigationItem.backBarButtonItem = backButton
+        
         newsSearchBar.delegate = self 
         newsTableView.delegate = self
         newsTableView.dataSource = self
@@ -39,6 +43,7 @@ class NewsViewController: UIViewController {
             }
         
     }
+
 
 extension NewsViewController : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -103,7 +108,22 @@ extension NewsViewController : UITableViewDelegate, UITableViewDataSource {
         return 180
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let selectedNews = news[indexPath.row]
+        performSegue(withIdentifier: "toNewsDetails", sender: selectedNews)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toNewsDetails" {
+            if let selectedNews = sender as? News, let destinationVC = segue.destination as? NewsDetailsViewController {
+                destinationVC.selectedNews = selectedNews
+            }
+        }
+    }
+    
+    
 }
+
     
 extension NewsViewController : UISearchBarDelegate {
     
