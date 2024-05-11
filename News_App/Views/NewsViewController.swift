@@ -23,10 +23,10 @@ class NewsViewController: UIViewController {
         super.viewDidLoad()
         
         let backButton = UIBarButtonItem()
-           backButton.title = "Back"
-           navigationItem.backBarButtonItem = backButton
+        backButton.title = "Back"
+        navigationItem.backBarButtonItem = backButton
         
-        newsSearchBar.delegate = self 
+        newsSearchBar.delegate = self
         newsTableView.delegate = self
         newsTableView.dataSource = self
         newsSearchBar.placeholder = "Search"
@@ -34,8 +34,7 @@ class NewsViewController: UIViewController {
         setupBindings()
         newsViewModel.requestData()
         
-            }
-    
+    }
     
     private func setupBindings(){
         
@@ -49,9 +48,8 @@ class NewsViewController: UIViewController {
             self.newsTableView.reloadData()
         }.disposed(by: disposeBag)
     }
-        
-    }
-
+    
+}
 
 extension NewsViewController : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
