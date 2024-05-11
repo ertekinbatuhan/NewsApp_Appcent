@@ -79,8 +79,6 @@ extension NewsViewController : UITableViewDelegate, UITableViewDataSource {
         cell.newsImageView.backgroundColor = .secondarySystemBackground
         cell.newsImageView.clipsToBounds = true
         
-        
-        
         guard let imageUrl = URL(string: currentNews.urlToImage ?? "") else {
             return cell
         }

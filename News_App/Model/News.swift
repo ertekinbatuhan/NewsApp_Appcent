@@ -28,5 +28,4 @@ struct News : Codable{
 
 struct  Source : Codable {
     let name : String
-    
 }
