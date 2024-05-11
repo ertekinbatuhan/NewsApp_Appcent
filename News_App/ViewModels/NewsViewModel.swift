@@ -18,7 +18,7 @@ class NewsViewModel {
     func requestData() {
         self.loading.onNext(true)
         
-        APICaller.shared.getNewsStories{ [weak self]  result in
+        APICaller.shared.requestData{ [weak self]  result in
             self?.loading.onNext(false)
                     switch result {
                     case .success(let articles):
@@ -31,7 +31,6 @@ class NewsViewModel {
     }
     
     func searchNews(searchText : String) {
-        
         
         APICaller.shared.search(with: searchText) { [weak self] result in
             switch result {

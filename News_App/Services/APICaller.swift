@@ -14,10 +14,9 @@ final class APICaller {
     
     struct Constants {
         
-        static let topHeadlinesURL = URL(string:"https://newsapi.org/v2/everything?q=us&apiKey=5d50a413e0b544ee99f6c97adea92e80")
-         
+        static let topHeadlinesURL = URL(string:"https://newsapi.org/v2/everything?q=us&apiKey=15699190f7eb48d7823cacf951f5f49f")
         
-        static let searchUrlString = "https://newsapi.org/v2/everything?sortBy=popularity&apiKey=5d50a413e0b544ee99f6c97adea92e80&q="
+        static let searchUrlString = "https://newsapi.org/v2/everything?sortBy=us&apiKey=15699190f7eb48d7823cacf951f5f49f&q="
        
     }
     
@@ -25,7 +24,7 @@ final class APICaller {
         
     }
     
-    public func getNewsStories(completion: @escaping(Result<[News] , Error>) -> Void ) {
+    public func requestData(completion: @escaping(Result<[News] , Error>) -> Void ) {
         guard let url = Constants.topHeadlinesURL else {
             return
         }
@@ -49,7 +48,6 @@ final class APICaller {
         task.resume()
     }
     
-    
     public func search(with query : String , completion: @escaping(Result<[News] , Error>) -> Void ) {
         
         
@@ -71,34 +69,16 @@ final class APICaller {
                 
                 do {
                     let result = try JSONDecoder().decode(APIResponse.self ,from: data)
-                    
-                    
+                
                     completion(.success(result.articles))
                     
                 }catch {
                     completion(.failure(error))
-                        
                 }
             }
         }
         task.resume()
     }
-    
-    
-    
- 
-    
-  
-    
-
-  
-
-    
-    
-    
-    
-    
-    
 }
     
     
